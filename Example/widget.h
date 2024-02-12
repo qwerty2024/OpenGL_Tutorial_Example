@@ -4,6 +4,7 @@
 #include <QGLWidget>
 #include <QMatrix4x4>
 #include <QGLShaderProgram>
+#include <QOpenGLShaderProgram>
 
 class GlWidget : public QGLWidget
 {
@@ -22,6 +23,8 @@ private:
     QMatrix4x4 pMatrix;
     QGLShaderProgram shaderProgram;
     QVector<QVector3D> vertices;
+    GLuint m_colAttr;
+    QVector<QVector4D> colors;
 };
 #endif // WIDGET_H
 
