@@ -98,6 +98,7 @@ void GlWidget::paintGL()
 
     glDrawArrays(GL_TRIANGLES, 0, vertices.size());
     shaderProgram.disableAttributeArray("vertex");
+    shaderProgram.disableAttributeArray("colAttr");
     shaderProgram.release();
 }
 
