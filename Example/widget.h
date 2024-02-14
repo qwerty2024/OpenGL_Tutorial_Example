@@ -8,7 +8,7 @@
 #include <QMouseEvent>
 #include <QWheelEvent>
 #include <QTimer>
-
+#include <QGLBuffer>
 
 class GlWidget : public QGLWidget
 {
@@ -28,21 +28,17 @@ protected:
     void wheelEvent(QWheelEvent *event);
 
 private:
-    QGLShaderProgram lightingShaderProgram;
-    QVector<QVector3D> spotlightVertices;
-    QVector<QVector3D> spotlightColors;
-    double lightAngle;
-
-    QMatrix4x4 pMatrix;
-    QGLShaderProgram shaderProgram;
-    QVector<QVector3D> cubeVertices;
-    QVector<QVector3D> cubeNormals;
-    QVector<QVector2D> cubeTextureCoordinates;
-    GLuint cubeTexture;
     QGLShaderProgram coloringShaderProgram;
-    //GLuint m_colAttr;
-    //QVector<QVector4D> colors;
+    int numSpotlightVertices;
+    QGLBuffer spotlightBuffer;
 
+    QGLShaderProgram lightingShaderProgram;
+    int numCubeVertices;
+    QGLBuffer cubeBuffer;
+    QMatrix4x4 pMatrix;
+    GLuint cubeTexture;
+
+    double lightAngle;
     double alpha;
     double beta;
     double distance;
