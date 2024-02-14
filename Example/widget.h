@@ -6,6 +6,9 @@
 #include <QGLShaderProgram>
 #include <QOpenGLShaderProgram>
 #include <QMouseEvent>
+#include <QWheelEvent>
+#include <QTimer>
+
 
 class GlWidget : public QGLWidget
 {
@@ -25,9 +28,18 @@ protected:
     void wheelEvent(QWheelEvent *event);
 
 private:
+    QGLShaderProgram lightingShaderProgram;
+    QVector<QVector3D> spotlightVertices;
+    QVector<QVector3D> spotlightColors;
+    double lightAngle;
+
     QMatrix4x4 pMatrix;
     QGLShaderProgram shaderProgram;
-    QVector<QVector3D> vertices;
+    QVector<QVector3D> cubeVertices;
+    QVector<QVector3D> cubeNormals;
+    QVector<QVector2D> cubeTextureCoordinates;
+    GLuint cubeTexture;
+    QGLShaderProgram coloringShaderProgram;
     //GLuint m_colAttr;
     //QVector<QVector4D> colors;
 
@@ -36,8 +48,8 @@ private:
     double distance;
     QPoint lastMousePosition;
 
-    QVector<QVector2D> textureCoordinates;
-    GLuint texture;
+private Q_SLOTS:
+    void timeout();
 };
 #endif // WIDGET_H
 

@@ -1,13 +1,10 @@
-//attribute lowp vec4 colAttr;
 uniform mat4 mvpMatrix;
 in vec4 vertex;
-varying lowp vec4 color;
-in vec2 textureCoordinate;
-varying vec2 varyingTextureCoordinate;
+in vec4 color;
+varying vec4 varyingColor;
 
 void main(void)
 {
-    //color = colAttr;
-    varyingTextureCoordinate = textureCoordinate;
+    varyingColor = color;
     gl_Position = mvpMatrix * vertex;
 }
