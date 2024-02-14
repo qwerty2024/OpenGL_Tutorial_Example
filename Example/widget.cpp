@@ -26,10 +26,10 @@ void GlWidget::initializeGL()
     shaderProgram.addShaderFromSourceFile(QGLShader::Vertex, ":/vertexShader.vsh");
     shaderProgram.addShaderFromSourceFile(QGLShader::Fragment, ":/fragmentShader.fsh");
     shaderProgram.link();
-    m_colAttr = shaderProgram.attributeLocation("colAttr");
+    //m_colAttr = shaderProgram.attributeLocation("colAttr");
     //vertices << QVector3D(1, 0, -2) << QVector3D(0, 1, -2) << QVector3D(-1, 0, -2);
-    vertices << QVector3D(-0.5, -0.5, 0.5)  << QVector3D( 0.5, -0.5, 0.5)  << QVector3D(-0.5, 0.5, 0.5)   << // front
-                QVector3D( 0.5, 0.5, 0.5)   << QVector3D(-0.5, 0.5, 0.5)   << QVector3D(0.5, -0.5, 0.5)   <<
+    vertices << QVector3D(-0.5, -0.5, 0.5)  << QVector3D( 0.5, -0.5, 0.5)  << QVector3D(0.5, 0.5, 0.5)   << // front
+                QVector3D(0.5, 0.5, 0.5)   << QVector3D(-0.5, 0.5, 0.5)   << QVector3D(-0.5, -0.5, 0.5)   <<
 
                 QVector3D( 0.5, -0.5, -0.5) << QVector3D(-0.5, -0.5, -0.5) << QVector3D(-0.5, 0.5, -0.5)  << // back
                 QVector3D(-0.5, 0.5, -0.5)  << QVector3D( 0.5, 0.5, -0.5)  << QVector3D(0.5, -0.5, -0.5)  <<
@@ -46,18 +46,33 @@ void GlWidget::initializeGL()
                 QVector3D(-0.5, -0.5, -0.5) << QVector3D( 0.5, -0.5, -0.5) << QVector3D( 0.5, -0.5, 0.5)  << // down
                 QVector3D( 0.5, -0.5, 0.5)  << QVector3D(-0.5, -0.5, 0.5)  << QVector3D(-0.5, -0.5, -0.5);
 
-    colors << QVector4D(1.0, 1.0, 0.0, 1.0) << QVector4D(0.0, 1.0, 0.0, 1.0) << QVector4D(0.0, 0.0, 1.0, 1.0) <<
-              QVector4D(1.0, 0.0, 0.0, 1.0) << QVector4D(0.0, 0.0, 1.0, 1.0) << QVector4D(0.0, 1.0, 0.0, 1.0) <<
-              QVector4D(0.0, 1.0, 1.0, 1.0) << QVector4D(0.0, 0.0, 0.0, 1.0) << QVector4D(1.0, 0.0, 1.0, 1.0) <<
-              QVector4D(1.0, 0.0, 1.0, 1.0) << QVector4D(1.0, 1.0, 1.0, 1.0) << QVector4D(0.0, 1.0, 1.0, 1.0) <<
-              QVector4D(0.0, 0.0, 0.0, 1.0) << QVector4D(1.0, 1.0, 0.0, 1.0) << QVector4D(0.0, 0.0, 1.0, 1.0) <<
-              QVector4D(0.0, 0.0, 1.0, 1.0) << QVector4D(1.0, 0.0, 1.0, 1.0) << QVector4D(0.0, 0.0, 0.0, 1.0) <<
-              QVector4D(0.0, 1.0, 0.0, 1.0) << QVector4D(0.0, 1.0, 1.0, 1.0) << QVector4D(1.0, 1.0, 1.0, 1.0) <<
-              QVector4D(1.0, 1.0, 1.0, 1.0) << QVector4D(1.0, 0.0, 0.0, 1.0) << QVector4D(0.0, 1.0, 0.0, 1.0) <<
-              QVector4D(0.0, 0.0, 1.0, 1.0) << QVector4D(1.0, 0.0, 0.0, 1.0) << QVector4D(1.0, 1.0, 1.0, 1.0) <<
-              QVector4D(1.0, 1.0, 1.0, 1.0) << QVector4D(1.0, 0.0, 1.0, 1.0) << QVector4D(0.0, 0.0, 1.0, 1.0) <<
-              QVector4D(0.0, 0.0, 0.0, 1.0) << QVector4D(0.0, 1.0, 1.0, 1.0) << QVector4D(0.0, 1.0, 0.0, 1.0) <<
-              QVector4D(0.0, 1.0, 0.0, 1.0) << QVector4D(1.0, 1.0, 0.0, 1.0) << QVector4D(0.0, 0.0, 0.0, 1.0);
+    //colors << QVector4D(1.0, 1.0, 0.0, 1.0) << QVector4D(0.0, 1.0, 0.0, 1.0) << QVector4D(0.0, 0.0, 1.0, 1.0) <<
+    //          QVector4D(1.0, 0.0, 0.0, 1.0) << QVector4D(0.0, 0.0, 1.0, 1.0) << QVector4D(0.0, 1.0, 0.0, 1.0) <<
+    //          QVector4D(0.0, 1.0, 1.0, 1.0) << QVector4D(0.0, 0.0, 0.0, 1.0) << QVector4D(1.0, 0.0, 1.0, 1.0) <<
+    //          QVector4D(1.0, 0.0, 1.0, 1.0) << QVector4D(1.0, 1.0, 1.0, 1.0) << QVector4D(0.0, 1.0, 1.0, 1.0) <<
+    //          QVector4D(0.0, 0.0, 0.0, 1.0) << QVector4D(1.0, 1.0, 0.0, 1.0) << QVector4D(0.0, 0.0, 1.0, 1.0) <<
+    //          QVector4D(0.0, 0.0, 1.0, 1.0) << QVector4D(1.0, 0.0, 1.0, 1.0) << QVector4D(0.0, 0.0, 0.0, 1.0) <<
+    //          QVector4D(0.0, 1.0, 0.0, 1.0) << QVector4D(0.0, 1.0, 1.0, 1.0) << QVector4D(1.0, 1.0, 1.0, 1.0) <<
+    //          QVector4D(1.0, 1.0, 1.0, 1.0) << QVector4D(1.0, 0.0, 0.0, 1.0) << QVector4D(0.0, 1.0, 0.0, 1.0) <<
+    //          QVector4D(0.0, 0.0, 1.0, 1.0) << QVector4D(1.0, 0.0, 0.0, 1.0) << QVector4D(1.0, 1.0, 1.0, 1.0) <<
+    //          QVector4D(1.0, 1.0, 1.0, 1.0) << QVector4D(1.0, 0.0, 1.0, 1.0) << QVector4D(0.0, 0.0, 1.0, 1.0) <<
+    //          QVector4D(0.0, 0.0, 0.0, 1.0) << QVector4D(0.0, 1.0, 1.0, 1.0) << QVector4D(0.0, 1.0, 0.0, 1.0) <<
+    //          QVector4D(0.0, 1.0, 0.0, 1.0) << QVector4D(1.0, 1.0, 0.0, 1.0) << QVector4D(0.0, 0.0, 0.0, 1.0);
+
+    textureCoordinates  << QVector2D(0, 0) << QVector2D(1, 0) << QVector2D(1, 1) // Front
+                        << QVector2D(1, 1) << QVector2D(0, 1) << QVector2D(0, 0)
+                        << QVector2D(0, 0) << QVector2D(1, 0) << QVector2D(1, 1) // Back
+                        << QVector2D(1, 1) << QVector2D(0, 1) << QVector2D(0, 0)
+                        << QVector2D(0, 0) << QVector2D(1, 0) << QVector2D(1, 1) // Left
+                        << QVector2D(1, 1) << QVector2D(0, 1) << QVector2D(0, 0)
+                        << QVector2D(0, 0) << QVector2D(1, 0) << QVector2D(1, 1) // Right
+                        << QVector2D(1, 1) << QVector2D(0, 1) << QVector2D(0, 0)
+                        << QVector2D(0, 0) << QVector2D(1, 0) << QVector2D(1, 1) // Top
+                        << QVector2D(1, 1) << QVector2D(0, 1) << QVector2D(0, 0)
+                        << QVector2D(0, 0) << QVector2D(1, 0) << QVector2D(1, 1) // Bottom
+                        << QVector2D(1, 1) << QVector2D(0, 1) << QVector2D(0, 0);
+
+    texture = bindTexture(QPixmap(":/cube.png"));
 }
 
 
@@ -89,16 +104,21 @@ void GlWidget::paintGL()
     vMatrix.lookAt(cameraPosition, QVector3D(0, 0, 0), cameraUpDirection);
 
     shaderProgram.setUniformValue("mvpMatrix", pMatrix * vMatrix * mMatrix);
+    shaderProgram.setUniformValue("texture", 0);
+    glBindTexture(GL_TEXTURE_2D, texture);
     //shaderProgram.setUniformValue("color", QColor(Qt::green));
     shaderProgram.setAttributeArray("vertex", vertices.constData());
     shaderProgram.enableAttributeArray("vertex");
 
-    shaderProgram.setAttributeArray("colAttr", colors.constData());
-    shaderProgram.enableAttributeArray("colAttr");
+    shaderProgram.setAttributeArray("textureCoordinate", textureCoordinates.constData());
+    shaderProgram.enableAttributeArray("textureCoordinate");
+    //shaderProgram.setAttributeArray("colAttr", colors.constData());
+    //shaderProgram.enableAttributeArray("colAttr");
 
     glDrawArrays(GL_TRIANGLES, 0, vertices.size());
     shaderProgram.disableAttributeArray("vertex");
-    shaderProgram.disableAttributeArray("colAttr");
+    shaderProgram.disableAttributeArray("textureCoordinate");
+    //shaderProgram.disableAttributeArray("colAttr");
     shaderProgram.release();
 }
 

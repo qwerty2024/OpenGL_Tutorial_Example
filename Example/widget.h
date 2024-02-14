@@ -28,13 +28,16 @@ private:
     QMatrix4x4 pMatrix;
     QGLShaderProgram shaderProgram;
     QVector<QVector3D> vertices;
-    GLuint m_colAttr;
-    QVector<QVector4D> colors;
+    //GLuint m_colAttr;
+    //QVector<QVector4D> colors;
 
     double alpha;
     double beta;
     double distance;
     QPoint lastMousePosition;
+
+    QVector<QVector2D> textureCoordinates;
+    GLuint texture;
 };
 #endif // WIDGET_H
 
